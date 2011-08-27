@@ -21,6 +21,12 @@ describe Ssearch do
 
       result.must_match 'example_file.rb'
     end
+
+    it 'returns matching files found in sub-folders' do
+      result = search_for 'a folder'
+
+      result.must_match 'another_file.txt'
+    end
   end
 end
 
