@@ -5,27 +5,27 @@ require 'spec_helper'
 describe Ssearch do
   describe '.run' do
     it 'returns a list of files which contain the given string' do
-      result = search_for 'stuff'
-
-      result.must_match 'example_file.rb'
+      search_for 'stuff' do |result|
+        result.must_match 'example_file.rb'
+      end
     end
 
     it 'returns a list of files that have the given string in their filenames' do
-      result = search_for 'example_file'
-
-      result.must_match 'example_file.rb'
+      search_for 'example_file' do |result|
+        result.must_match 'example_file.rb'
+      end
     end
 
     it 'returns the lines the given text was found on' do
-      result = search_for 'stuff'
-
-      result.must_match 'example_file.rb'
+      search_for 'stuff' do |result|
+        result.must_match 'example_file.rb'
+      end
     end
 
     it 'returns matching files found in sub-folders' do
-      result = search_for 'a folder'
-
-      result.must_match 'another_file.txt'
+      search_for 'a folder' do |result|
+        result.must_match 'another_file.txt'
+      end
     end
   end
 end
